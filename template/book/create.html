@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block con %}
+    <div class="container mt-5 mb-5" style="font-size: 20px; font-weight: bold; width: 80%;">
+        <form method="POST" name="regist">
+            {% csrf_token %}
+            <h1><b>CREATE BOOKMARK</b></h1>
+
+            <div class="text-end">
+                <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+                        <input type="checkbox" name='impo' class="btn-check" id="btncheck2" autocomplete="off">
+                        <label class="btn btn-outline-warning" for="btncheck2">★</label>
+                  </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">SITE NAME</label>
+                <input type="text" name="sname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">SITE URL</label>
+                <input type="url" name="surl" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">COMMENT</label>
+                <textarea class="form-control" name="com"></textarea>
+            </div>
+            <div class="text-end">
+                <button type="button" class="btn btn-success" onclick="check()">REGIST</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function check(){
+            f = document.regist;
+            if(!f.sname.value){
+                alert("site name 을 입력하세요!");
+            }else if(!f.surl.value){
+                alert("site url 을 입력하세요!")
+            }else{
+                f.submit();
+            }
+        }
+    </script>
+{% endblock %}

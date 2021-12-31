@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block con %}
+    <div class="container mt-5 mb-5"   style="font-size: 20px; font-weight: bold; width: 80%;">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h1><b>CREATE TOPIC</b></h1>
+            <div class="mb-3 mt-5">
+                <label class="form-label">SUBJECT</label>
+                <input type="text" name="sub" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">CONTENT</label>
+                <textarea class="form-control" name="con"></textarea>
+            </div>
+            <div class="mt-3 text-end">
+                <button class="btn btn-success" type="button" onclick="make_choice()">+ CHOICES</button>
+            </div> 
+            <div id="here"></div>
+            <div class="mt-3 text-end">
+                <button class="btn btn-primary">TOPIC SUBMIT</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function make_choice(){
+            d = document.getElementById("here");
+            div = document.createElement("div");
+            div.innerHTML = '<hr><div class="mb-3">\
+            <label class="form-label">NAME</label>\
+            <input type="text" name="cho_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">\
+            </div>\
+            <div class="mb-3">\
+            <label class="form-label">COMMENT</label>\
+            <textarea class="form-control" name="cho_com"></textarea>\
+            </div>\
+            <div class="mb-3">\
+            <input type="file" name="cho_pic" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">\
+            </div><hr>';
+            d.appendChild(div);
+        }
+    </script>
+
+{% endblock %}

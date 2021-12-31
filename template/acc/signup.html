@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block con %}
+    <form method="post" enctype="multipart/form-data" name="regist">
+        {% csrf_token %}
+        <div class="container mt-5 mb-5" style="font-size: 20px; font-weight: bold; width: 80%;">
+            <h1><b>SIGN UP</b></h1>
+            <div class="mb-3 mt-5">
+                <label class="form-label">Username</label>
+                <input type="text" name="un" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" name="pw" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">age</label>
+                <input type="number" name="age" class="form-control" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Comment</label>
+                <textarea class="form-control" name="comment"></textarea>
+            </div>
+            <div class="mb-3">
+                <input type="file" name="pic" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            </div>
+            <div class="text-end">
+                <button type="button" onclick="check()" class="btn btn-success">Regist</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function check(){
+            f = document.regist;
+            if(!f.un.value){
+                alert("INPUT USERNAME!!!");
+            }else if(!f.pw.value){
+                alert("INPUT PASSWORD!!!");
+            }else{
+                f.submit();
+            }
+        }
+    </script>
+{% endblock %}

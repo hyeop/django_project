@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block con %}
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            {% if user.is_authenticated %}
+                <h1 class="display-5 fw-bold"> 💎 {{ user.username }} 💎 님~</h1>
+                <p class="col-md-8 fs-4">좋은 하루 되세요~</p>
+            {% else %}
+                <h1 class="display-5 fw-bold">된장찌개 좋아하는 사람 접근금지</h1>
+                <p class="col-md-8 fs-4">김치찌개 탕에 빠지고 싶은사람만 들어와요~</p>
+                <a href="{% url 'acc:login' %}"><button class="btn btn-primary btn-lg" type="button">LOGIN</button></a>
+                <a href="{% url 'acc:signup' %}"><button class="btn btn-primary btn-lg" type="button">SIGNUP</button></a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
